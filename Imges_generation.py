@@ -9,12 +9,14 @@ font_size = 90
 
 #img = Image.new('RGB', (2700, 1300), color = 'white')
 images = []
+
 img = Image.new('RGB', (2700, 1300), color = 'white')
 images.append(img)
 my_font = ImageFont.truetype('arial.ttf', font_size)
 
 d = ImageDraw.Draw(images[0])
 f = open("demofile.txt", "r")
+#f = open("DivinaCommedia.txt", "r")
 text = f.read()
 #d.text(xy=(10,10), text=text, fill='black', font=my_font)
 
