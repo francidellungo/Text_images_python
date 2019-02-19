@@ -6,7 +6,7 @@ space_btw_lines = 120
 max_text_length = 1200
 font_size = 90
 """-------------------"""
-
+imgs_path = '.\\imgs\\'
 #img = Image.new('RGB', (2700, 1300), color = 'white')
 images = []
 image_width = 2800
@@ -30,8 +30,8 @@ for num_line in range(len(lines)):
     if y_text >= max_text_length:
         y_text = 0
         print('fine pagina', num_page)
-        images[num_page].show('PHOTO_'+str(num_page)+'.png')
-        images[num_page].save('PHOTO_'+str(num_page)+'.png')
+        # images[num_page].show('PHOTO_'+str(num_page)+'.png')
+        images[num_page].save(imgs_path+'PHOTO_'+str(num_page)+'.png')
         num_page = num_page + 1
         img = Image.new('RGB', (2700, 1300), color = 'white')
         images.append(img)
@@ -39,8 +39,8 @@ for num_line in range(len(lines)):
     elif lines[num_line] == lines[-1]:
         print('fine testo')
         d.text((100, y_text), lines[num_line], font = my_font, fill = 'black')
-        images[num_page].show('PHOTO_'+str(num_page)+'.png')
-        images[num_page].save('PHOTO_'+str(num_page)+'.png')
+        # images[num_page].show('PHOTO_'+str(num_page)+'.png')
+        images[num_page].save(imgs_path+'PHOTO_'+str(num_page)+'.png')
         break
     else:
         d.text((100, y_text), lines[num_line], font = my_font, fill = 'black')
