@@ -1,5 +1,10 @@
 from PIL import Image, ImageDraw, ImageFont
 import textwrap
+from win32api import GetSystemMetrics
+
+print("Width =", GetSystemMetrics(0))
+print("Height =", GetSystemMetrics(1))
+
 """-----------------
 PARAMETERS:"""
 space_btw_lines = 120
@@ -9,8 +14,8 @@ font_size = 90
 imgs_path = '.\\imgs\\'
 #img = Image.new('RGB', (2700, 1300), color = 'white')
 images = []
-image_width = 2800
-image_height = 1300
+image_width = GetSystemMetrics(0)
+image_height = GetSystemMetrics(1)
 img = Image.new('RGB', (image_width, image_height), color = 'white')
 images.append(img)
 my_font = ImageFont.truetype('arial.ttf', font_size)
@@ -33,7 +38,7 @@ for num_line in range(len(lines)):
         # images[num_page].show('PHOTO_'+str(num_page)+'.png')
         images[num_page].save(imgs_path+'PHOTO_'+str(num_page)+'.png')
         num_page = num_page + 1
-        img = Image.new('RGB', (2700, 1300), color = 'white')
+        img = Image.new('RGB', (image_width,image_height), color = 'white')
         images.append(img)
         d = ImageDraw.Draw(images[num_page])
     elif lines[num_line] == lines[-1]:
