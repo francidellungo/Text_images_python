@@ -4,18 +4,22 @@ from win32api import GetSystemMetrics
 
 print("Width =", GetSystemMetrics(0))
 print("Height =", GetSystemMetrics(1))
+image_width = GetSystemMetrics(0)
+image_height = GetSystemMetrics(1)
 
 """-----------------
 PARAMETERS:"""
-space_btw_lines = 120
-max_text_length = 1200
-font_size = 90
+
+space_btw_lines = 110
+font_size = 70
+margin = 100
+max_text_length = image_height - int(margin/2)
+
 """-------------------"""
 imgs_path = '.\\imgs\\'
 #img = Image.new('RGB', (2700, 1300), color = 'white')
 images = []
-image_width = GetSystemMetrics(0)
-image_height = GetSystemMetrics(1)
+
 img = Image.new('RGB', (image_width, image_height), color = 'white')
 images.append(img)
 my_font = ImageFont.truetype('arial.ttf', font_size)
@@ -27,7 +31,7 @@ f = open("PromessiSposi.txt", "r")
 text = f.read()
 #d.text(xy=(10,10), text=text, fill='black', font=my_font)
 
-lines = textwrap.wrap(text, width = 60) #This width value needs to be set automatically
+lines = textwrap.wrap(text, width = 35) #This width value needs to be set automatically
 y_text = 0
 num_page = 0
 for num_line in range(len(lines)):
@@ -43,12 +47,12 @@ for num_line in range(len(lines)):
         d = ImageDraw.Draw(images[num_page])
     elif lines[num_line] == lines[-1]:
         print('fine testo')
-        d.text((100, y_text), lines[num_line], font = my_font, fill = 'black')
+        d.text((margin, y_text), lines[num_line], font = my_font, fill = 'black')
         # images[num_page].show('PHOTO_'+str(num_page)+'.png')
         images[num_page].save(imgs_path+'PHOTO_'+str(num_page)+'.png')
         break
     else:
-        d.text((100, y_text), lines[num_line], font = my_font, fill = 'black')
+        d.text((margin, y_text), lines[num_line], font = my_font, fill = 'black')
         y_text += space_btw_lines
 
 
