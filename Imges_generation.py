@@ -10,11 +10,12 @@ image_height = GetSystemMetrics(1)
 """-----------------
 PARAMETERS:"""
 
-space_btw_lines = 110
-font_size = 70
-margin = 100
-max_text_length = image_height - int(margin/2)
+space_btw_lines = int(image_height/7)
+font_size = 100
+margin = int(image_width/20)
+max_text_length = image_height - int(margin/2) -100
 
+print('space btw lines: '+str(space_btw_lines)+', font size: '+str(font_size)+', margin: '+str(margin)+' , max text length: '+str(max_text_length))
 """-------------------"""
 imgs_path = '.\\imgs\\'
 #img = Image.new('RGB', (2700, 1300), color = 'white')
@@ -31,7 +32,7 @@ f = open("PromessiSposi.txt", "r")
 text = f.read()
 #d.text(xy=(10,10), text=text, fill='black', font=my_font)
 
-lines = textwrap.wrap(text, width = 35) #This width value needs to be set automatically
+lines = textwrap.wrap(text, width = int(image_width/55)) #This width value needs to be set automatically
 y_text = 0
 num_page = 0
 for num_line in range(len(lines)):
