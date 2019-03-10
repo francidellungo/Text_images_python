@@ -19,7 +19,7 @@ PARAMETERS:"""
 
 # fra
 space_btw_lines = int(image_height/7)
-font_size = int((image_width/55)*2)
+font_size = int((image_width/55)*2) # 100
 margin = int(image_width/20)
 max_text_length = image_height - int(margin/2) -100
 width = int(image_width/55)
