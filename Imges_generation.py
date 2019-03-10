@@ -6,23 +6,24 @@ print("Width =", GetSystemMetrics(0))
 print("Height =", GetSystemMetrics(1))
 image_width = GetSystemMetrics(0)
 image_height = GetSystemMetrics(1)
-
 """-----------------
 PARAMETERS:"""
 
-# vivo
-# space_btw_lines = 110
-# font_size = 70
-# margin = 100
-# max_text_length = image_height - int(margin/2)
-# width = 35
+# vivo (1366, 768)
+space_btw_lines = int(round(image_height/7))
+font_size = int(round(image_height/11))
+margin = int(image_width/13.5)
+max_text_length = image_height - int(margin/2)
+width = int(image_width/39)
+top_y = int(margin/5)
 
 # fra
-space_btw_lines = int(image_height/7)
-font_size = int((image_width/55)*2) # 100
-margin = int(image_width/20)
-max_text_length = image_height - int(margin/2) -100
-width = int(image_width/55)
+# space_btw_lines = int(image_height/7)
+# font_size = 100
+# margin = int(image_width/20)
+# max_text_length = image_height - int(margin/2) -100
+# width = int(image_width/35)
+# top_y = 0
 
 print('space btw lines: '+str(space_btw_lines)+', font size: '+str(font_size)+', margin: '+str(margin)+' , max text length: '+str(max_text_length))
 """-------------------"""
@@ -47,12 +48,12 @@ lines = textwrap.wrap(text, width = width)
 
 lines_txt = []
 
-y_text = 0
+y_text = top_y
 num_page = 0
 for num_line, line in enumerate(lines):
 
     if y_text >= max_text_length:
-        y_text = 0
+        y_text = top_y
         print('fine pagina', num_page)
         images[num_page].save(imgs_path+'PHOTO_'+(str(num_page) if num_page > 9 else '0'+str(num_page))+'.png')
         with open(txts_path+'PHOTO_'+(str(num_page) if num_page > 9 else '0'+str(num_page))+'.txt', 'w', encoding='utf-8') as txt_file:
