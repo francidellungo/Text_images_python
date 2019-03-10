@@ -10,12 +10,21 @@ image_height = GetSystemMetrics(1)
 """-----------------
 PARAMETERS:"""
 
-space_btw_lines = 110
-font_size = 70
-margin = 100
-max_text_length = image_height - int(margin/2)
-width = 35
+# vivo
+# space_btw_lines = 110
+# font_size = 70
+# margin = 100
+# max_text_length = image_height - int(margin/2)
+# width = 35
 
+# fra
+space_btw_lines = int(image_height/7)
+font_size = 100
+margin = int(image_width/20)
+max_text_length = image_height - int(margin/2) -100
+width = int(image_width/55)
+
+print('space btw lines: '+str(space_btw_lines)+', font size: '+str(font_size)+', margin: '+str(margin)+' , max text length: '+str(max_text_length))
 """-------------------"""
 imgs_path = '.\\imgs\\'
 txts_path = '.\\txts\\'
@@ -33,7 +42,7 @@ f = open("PromessiSposi.txt", "r", encoding='utf-8')
 text = f.read()
 #d.text(xy=(10,10), text=text, fill='black', font=my_font)
 
-lines = textwrap.wrap(text, width = width) #This width value needs to be set automatically
+lines = textwrap.wrap(text, width = width) 
 # print(lines)
 
 lines_txt = []
